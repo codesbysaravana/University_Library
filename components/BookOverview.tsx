@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from "next/image";
 import { Button } from '@/components/ui/button';
+import BookCover from './BookCover';
 
 // Getting the data from index.ts 
 // ---> sampleBooks 
@@ -54,6 +55,25 @@ const BookOverview = ({ title, author, genre, rating ,total_copies, available_co
     <div className='"relative flex flex-1 justify-center'>
         <div className='relative'>
             {/* New Component BookCover */}
+
+            {/* FrontCover of book in homepage */}
+            <BookCover
+                variant="wide"
+                className="z-10"
+                coverColor={color}
+                coverImage={cover}
+            />
+
+            {/* BackCover of book in homepage   the blurring the cover behind*/}
+            <div className='absolute left-16 top-10 rotate-12 opacity-40 max-sm:hidden'>
+
+                <BookCover
+                    variant="wide"
+                    coverColor={color}
+                    coverImage={cover}
+            />
+
+            </div>
         </div>
     </div>  
 
