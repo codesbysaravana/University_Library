@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from "next/image";
+import { Button } from '@/components/ui/button';
 
 // Getting the data from index.ts 
 // ---> sampleBooks 
@@ -25,10 +26,37 @@ const BookOverview = ({ title, author, genre, rating ,total_copies, available_co
             </p>
 
             <div className='flex flex-row gap-1 '>
-                <Image></Image>
+                <Image src="/icons/star.svg" alt='star' width={22} height={22} />
+                <p>{rating}</p>
             </div>
         </div>
+
+        <div className='book-copies'>
+            <p>
+                Total Books: <span>{total_copies}</span>
+            </p>
+            <p>
+                Available Books: <span>{available_copies}</span>
+            </p>
+        </div>
+
+        <p className="book-description">
+            {description}
+        </p>
+
+        <Button className="book-overview_btn">
+            <Image src="/icons/book.svg" alt="book" width={20} height={20} />
+
+            <p className='font-bebas-neue text-xl text-dark-100'>Borrow Book</p>
+        </Button>
       </div>
+
+    <div className='"relative flex flex-1 justify-center'>
+        <div className='relative'>
+            {/* New Component BookCover */}
+        </div>
+    </div>  
+
     </section>
   );
 }
