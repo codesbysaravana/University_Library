@@ -13,3 +13,6 @@ interface Book {
   summary: string;
   isLoanedBook?: boolean;
 }
+
+//global Book type using interface
+//used by BookList, BookOverview
