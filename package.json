@@ -18,6 +18,7 @@
     "dotenv": "^16.5.0",
     "imagekit": "^6.0.0",
     "imagekitio-next": "^1.0.1",
+    "inspector": "^0.5.0",
     "lucide-react": "^0.511.0",
     "next": "15.3.2",
     "react": "^19.0.0",
