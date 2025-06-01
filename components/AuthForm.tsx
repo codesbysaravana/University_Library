@@ -3,12 +3,11 @@
 import React from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { DefaultValues, SubmitHandler, useForm, UseFormReturn, FieldValues, Path } from "react-hook-form"
-import { z, ZodType } from "zod"
+import { ZodType } from "zod"
 import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -18,6 +17,9 @@ import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants"
+import ImageIpload from "./ImageUpload" // Assuming this is the correct path to your ImageUpload component
+
+/* pulling FieldNames and FieldTypes from manual created constants file Not shadCn */
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -26,14 +28,18 @@ interface Props<T extends FieldValues> {
   type: "SIGN_IN" | "SIGN_UP";
 }
 
+
+
+
+/* Now this Props Type is of <T> type, which means it can be any type, and we can use it to define the type of the schema, defaultValues, and onSubmit function. */
+
+
 const AuthForm = <T extends FieldValues>({
   type,
   schema,
   defaultValues,
   onSubmit,
 }: Props<T>) => {
-  const router = useRouter();
-
   const isSignIn = type === "SIGN_IN";
 
   const form: UseFormReturn<T> = useForm({
@@ -72,15 +78,18 @@ const AuthForm = <T extends FieldValues>({
                                     <FormLabel className='capitalize'>
                                         {FIELD_NAMES[fieldProps.name as keyof typeof FIELD_NAMES]}
                                     </FormLabel>
-                                    
                                     <FormControl>
-                                        <Input placeholder="Enter value" {...fieldProps} />
+                                    {/* all and most will be inputs in form except univresity card its a image */}
+                                        {fieldProps.name === "universityCard" ? (<ImageIpload/> ) : (
+                                            /* mentioning the input types from constants file */
+                                            <Input 
+                                                required 
+                                                type={FIELD_TYPES[fieldProps.name as keyof typeof FIELD_TYPES]}
+                                                placeholder="Enter value" {...fieldProps}
+                                                className="form-input"
+                                             />
+                                        )}
                                     </FormControl>
-                                    
-                                    <FormDescription>
-                                        This is your public display name.
-                                    </FormDescription>
-                                    
                                     <FormMessage />
                                 
                                 </FormItem>
@@ -88,13 +97,14 @@ const AuthForm = <T extends FieldValues>({
                         />
                     ))}
 
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" className='form-btn'>{isSignIn ? "Sign In" : "Sign  Up"}</Button>
                 </form>
             </Form>
 
             <p className='text-center text-base font-medium'>
                 {isSignIn ? "New to BookDom?" : "Already have an account?"}
 
+                    {/* linking to the different pages  */}
                 <Link 
                     href={isSignIn ? "/sign-up" : "/sign-in"}
                     className='font-bold text-primary'
@@ -109,3 +119,5 @@ const AuthForm = <T extends FieldValues>({
 }
 
 export default AuthForm
+/* 
+for actually uploading images use IMAGEKIT SERVICE */

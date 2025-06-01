@@ -7,7 +7,9 @@ import React from 'react'
 import { signInSchema } from '../../../lib/validation'
 
 const page = () => {
-  <AuthForm
+
+  return (
+    <AuthForm
     type="SIGN_IN"
     schema={signInSchema}
     defaultValues={{ 
@@ -16,6 +18,33 @@ const page = () => {
     }}
     onSubmit={() => {}}
   />
+
+  )
+  
 }
 
 export default page
+
+
+
+
+/*
+completly know the code
+
+class Solution(object):
+    def productExceptSelf(self, nums):
+        n = len(nums)
+        res = [1] * n
+
+        prefix = suffix = 1
+
+        for i in range(n):
+            res[i] *= prefix
+            prefix *= nums[i]
+
+        for i in range(n - 1, -1, -1):
+            res[i] *= suffix
+            suffix *= nums[i]
+
+        return res
+ */
