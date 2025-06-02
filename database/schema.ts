@@ -1,7 +1,7 @@
 //schema declaration for us 
 
 
-import { varchar, uuid, integer, pgTable, serial, text, timestamp, date } from 'drizzle-orm/pg-core';
+import { varchar, uuid, integer, pgTable, pgEnum, serial, text, timestamp, date } from 'drizzle-orm/pg-core';
 
 //now defining enum the possible answers to the status in users table
 //array of three values 
