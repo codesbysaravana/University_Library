@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ReactNode } from "react";
-
+import { Toaster } from "@/components/ui/sonner"
 import localFont from "next/font/local"
 
 
@@ -38,6 +38,9 @@ const RootLayout = ({ children }:{children: ReactNode;}) =>  {
         className={`${IBMPlexSans.className} ${BebasNeue.variable} antialiased`}
       >
         {children}
+
+        <Toaster />
+
       </body>
     </html>
   );

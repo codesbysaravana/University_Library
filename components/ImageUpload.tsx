@@ -19,7 +19,7 @@ const authenticator = async () => {
 
       throw new Error(
         `Error authenticating: ${response.status}: ${errorTxt}`);
-    }
+    } 
 
     const data = await response.json();
     const { signature, expire, token } = data;
@@ -31,12 +31,21 @@ const authenticator = async () => {
 }
 
 
-const ImageUpload = () => {
+//imageUpload takes inupt prop as filepath type string cuz typescript 
+
+const ImageUpload = ({ onFileChange }: { onFileChange: (filePath: string) => void }) => {
   const IKUploadRef = useRef(null);
   const[file, setFile] = useState<{ filePath: string } | null>(null)
 
-  const onError = () => {}
-  const onSuccess = () => {}
+  const onError = (errors: any) => {
+    console.log(errors)
+  }
+
+
+  const onSuccess = (res: any) => {
+    setFile(res);
+    onFileChange(res.filePath);
+  }
 
   return (
     <ImageKitProvider 
