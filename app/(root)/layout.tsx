@@ -1,7 +1,8 @@
 import React from 'react'
 import { ReactNode } from 'react'
 
-import Header from '../../components/Header.tsx'
+//@allowImportingTsExtensions
+import Header from '../../components/Header'
 
 const layout = ({ children } : { children: ReactNode}) => {
   return (

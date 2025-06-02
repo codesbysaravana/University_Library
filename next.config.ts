@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
+
 //Me created the images...new configuration fornext
+//essentially saying next that images/urls/ links will be coming from these urls
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [

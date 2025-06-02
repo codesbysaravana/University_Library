@@ -39,8 +39,7 @@ const RootLayout = ({ children }:{children: ReactNode;}) =>  {
       >
         {children}
 
-        <Toaster />
-
+        <Toaster /> {/* need toaster to appear at the bottom of everything */}
       </body>
     </html>
   );
