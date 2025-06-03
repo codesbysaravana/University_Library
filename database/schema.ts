@@ -1,5 +1,5 @@
 //schema declaration for us 
-
+//Migration in Drizzle
 
 import { varchar, uuid, integer, pgTable, pgEnum, serial, text, timestamp, date } from 'drizzle-orm/pg-core';
 
@@ -40,3 +40,13 @@ export const users = pgTable("users", {
 })
 
 export type InsertUser = typeof users.$inferInsert;
+
+
+//Migrations are scripts to change DB structure safely.
+
+//They enable version control for your database.
+
+//Tools like Drizzle, Prisma, Knex, Flyway automate this.
+
+//Use them to keep schema consistent, trackable, and reversible.
+

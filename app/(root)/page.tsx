@@ -1,10 +1,17 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import BookOverview from '@/components/BookOverview';
-import BookList from '@/components/BookList.tsx';
-import { sampleBooks } from '@/constants/index.ts';
+import BookList from '@/components/BookList';
+import { sampleBooks } from '@/constants/index';
+import { db } from "../../database/drizzle";
+import { users } from "../../database/schema"
 
-const Home = () => {
+
+const Home = async () => {
+  //to fetching users from database 
+  const result = await db.select().from(users);
+  //console logs all users and the null and 2 is used for spacing in console
+  console.log(JSON.stringify(result, null, 2));
+
   return (
       <>
       {/* passing in sampleBooks[0] to BookOverview component */}
