@@ -16,3 +16,14 @@ interface Book {
 
 //global Book type using interface
 //used by BookList, BookOverview
+
+
+interface AuthCredentials {
+ fullName: string; 
+ email: string;
+ password: string;
+ universityId: number;
+ universityCard: string;
+}
+
+//getss accepted at lib -----> actions ----> auth.ts
