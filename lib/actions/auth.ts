@@ -52,7 +52,7 @@ export const signUp = async (params: AuthCredentials) => {
         //chechking if a new signed UP user already exists
 
         //excrypting password
-        const hashedPassword = await hash(password, salt: 10);
+        const hashedPassword = await hash(password, 10);
 
         try {
             //try create a new user
