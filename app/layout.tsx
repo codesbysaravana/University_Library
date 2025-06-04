@@ -3,6 +3,9 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner"
 import localFont from "next/font/local"
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
+//frrom root file auth
 
 
 
@@ -31,9 +34,13 @@ export const metadata: Metadata = {
   description: "A University Library Management System",
 };
 
-const RootLayout = ({ children }:{children: ReactNode;}) =>  {
+const RootLayout = async ({ children }:{children: ReactNode;}) =>  {
+  const session = await auth()
+
   return (
     <html lang="en">
+    <SessionProvider session={session}>
+
       <body
         className={`${IBMPlexSans.className} ${BebasNeue.variable} antialiased`}
       >
@@ -41,8 +48,11 @@ const RootLayout = ({ children }:{children: ReactNode;}) =>  {
 
         <Toaster /> {/* need toaster to appear at the bottom of everything */}
       </body>
+      </SessionProvider>
     </html>
   );
 }
 
 export default RootLayout; 
+
+///Finally wrap em all with sessionProvider

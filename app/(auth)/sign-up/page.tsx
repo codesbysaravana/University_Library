@@ -5,6 +5,7 @@
 import React from 'react'
 import AuthForm from '../../../components/AuthForm'
 import { signUpSchema } from '../../../lib/validation'
+import { signUp } from '@/lib/actions/auth'
 
 const page = () => {
   return (
@@ -18,9 +19,12 @@ const page = () => {
             universityId: 0,
             universityCard: '',
         }}
-        onSubmit={() => {}}
+        onSubmit={signUp}
   />
   )
 }
 
 export default page;
+
+
+//signUp goes to the auth.ts in actions

@@ -18,6 +18,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants"
 import ImageUpload from "./ImageUpload" // Assuming this is the correct path to your ImageUpload component
+import { toast } from "sonner";
 
 /* pulling FieldNames and FieldTypes from manual created constants file Not shadCn */
 
@@ -41,6 +42,7 @@ const AuthForm = <T extends FieldValues>({
   onSubmit,
 }: Props<T>) => {
   const isSignIn = type === "SIGN_IN";
+  const router = useRouter();
 
   const form: UseFormReturn<T> = useForm({
     resolver: zodResolver(schema),
@@ -48,7 +50,17 @@ const AuthForm = <T extends FieldValues>({
   });
 
   const handleSubmit: SubmitHandler<T> = async (data) => {
-    // TODO: Add submit logic here
+    // TODO: Add submit logic here final step in auth 
+    //awaits the passed data from form 
+    const result = await onSubmit(data);
+
+    if(result.success) {
+    toast.success(isSignIn ? 'You have signed in successfully.' : 'You have signed up successfully.');
+    //finally after all signs and ins going to the next/ main page
+    router.push('/');
+    } else  {
+        toast.error('Error Signing In');
+    }
   };
 
   return (
@@ -123,3 +135,6 @@ const AuthForm = <T extends FieldValues>({
 export default AuthForm
 /* 
 for actually uploading images use IMAGEKIT SERVICE */
+
+
+//atlast we create the handleSubmit button after all the auth functionality routes and folders at the end
