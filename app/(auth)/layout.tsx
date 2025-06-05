@@ -1,8 +1,17 @@
 import React from 'react'
 import { ReactNode } from 'react'
 import Image from 'next/image'
+import {auth } from "@/auth";
+import { redirect } from "next/navigation";
 
-const layout = ({ children } : { children : ReactNode }) => {
+const layout = async ({ children } : { children : ReactNode }) => {
+    //to prevent routing from main to sign in page and to solidify that user logged in completely 
+    const session = await auth()
+    //wait for auth and proceed
+    //get session and if theres one
+    if(session) redirect("/");
+
+
   return (
     <main className='auth-container'>
         {/* className='auth-container'> is the background appearing one class!!! */}

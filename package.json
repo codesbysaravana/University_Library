@@ -15,6 +15,7 @@
     "@hookform/resolvers": "^5.0.1",
     "@imagekit/next": "^2.1.2",
     "@neondatabase/serverless": "^1.0.0",
+    "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "bcryptjs": "^3.0.2",
