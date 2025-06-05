@@ -20,6 +20,10 @@ const sql = neon(config.env.databaseUrl);
 
 export const db = drizzle({ client: sql});
 
+if (process.env.NEON_DATABASE_URL === 'dummy') {
+  // mock or skip DB
+}
+
 
 
 //created by drizzle by us
