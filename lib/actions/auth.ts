@@ -6,6 +6,9 @@ import { db } from "../../database/drizzle";
 import { users } from "../../database/schema"
 import { hash } from "bcryptjs";
 import { signIn } from "@/auth";
+import { headers } from "next/headers";
+import ratelimit from "@/lib/ratelimit";
+import { redirect } from "next/navigation";
 
 
 //functiion for signing in automatic after signing up
@@ -13,6 +16,13 @@ import { signIn } from "@/auth";
 export const signInWithCredentials = async (params: Pick<AuthCredentials, 'email' | "password">,) => {
     //extract params
     const { email, password } = params;
+
+    //getting the current users ip address or show a default one 
+    const ip = (await headers()).get('x-forwarded-for') || '127.0.0.1';
+    const { success } = await ratelimit.limit(ip);
+
+    if(!success) return redirect("/too-fast");
+    //new route well create redirect if theres too many requests
 
     try {
         //signin func from @/auth coming from root auth.ts passing email, pass to login after auth is successfull
@@ -37,6 +47,15 @@ export const signInWithCredentials = async (params: Pick<AuthCredentials, 'email
 //signUP gets paramters of pnly type Authredentials...creted in types.d.ts
 export const signUp = async (params: AuthCredentials) => {
     const { fullName, email, universityId, password, universityCard } = params;
+
+    
+    //getting the current users ip address or show a default one 
+    const ip = (await headers()).get('x-forwarded-for') || '127.0.0.1';
+    const { success } = await ratelimit.limit(ip);
+
+    if(!success) return redirect("/too-fast");
+    //new route well create
+
 
     //checking if user exists already
     const existingUser = await db
