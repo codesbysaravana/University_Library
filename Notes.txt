@@ -205,3 +205,16 @@ drizzle.config.ts (drizzle configuration)
 
 running npm run db:studio 
 creates drizzle studio of us Drizzle Studio is up and running on https://local.drizzle.studio like this 
+
+
+
+
+
+//Learn rate limiting 
+//DDoS ----> denial of service attacks
+//go to upstash
+//secondary databsae to optimize our application
+// now take rest API copy for upstash rest url 
+//install rate limiting upstash red 
+  npm install @upstash/ratelimit and
+  npm install @upstash/redis
