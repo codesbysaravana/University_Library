@@ -5,6 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+//getting initials
 export const getInitials = (name: string): string =>
   name
     .split(" ")
