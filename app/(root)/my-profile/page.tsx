@@ -20,6 +20,8 @@ const page = () => {
             <Button>Logout</Button>
         </form>
 
+
+        {/* //show the books the current user has borrowed */}
         <BookList title="Borrowed Books" books={sampleBooks} />
     </>
   )

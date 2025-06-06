@@ -23,8 +23,3 @@ const Toaster = ({ ...props }: ToasterProps) => {
 }
 
 export { Toaster }
-
-
-/* 
-toaster coming from shadcn 
-this is for the mini pop ups that appear on our screens  */
