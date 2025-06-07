@@ -14,3 +14,4 @@ export default ratelimit;
 
 //every single user gets 5 tries for sign in before too fast apears
 // for showcase turn to 1 and show the too fast page
+// limit of 5 requests per minute
