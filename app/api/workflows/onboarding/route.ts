@@ -1,4 +1,5 @@
 import { serve } from "@upstash/workflow/nextjs";
+import emailjs from "@emailjs/browser";
 
 type InitialData = {
   email: string;
@@ -37,14 +38,19 @@ export const { POST } = serve<InitialData>(async (context) => {
 
 async function sendEmail(message: string, email: string) {
   // Implement email sending logic here
-  console.log(`Sending ${message} email to ${email}`);
+  return emailjs.send(
+    "service_ah60jft",
+    "template_t78hh7n",
+    { message, user_email: email },
+    "wR6BrfiZFH_DFuMap"
+  );
 }
 
 type UserState = "non-active" | "active";
 
 const getUserState = async (): Promise<UserState> => {
   // Implement user state logic here
-  return "non-active";
+  
 };
 
 
