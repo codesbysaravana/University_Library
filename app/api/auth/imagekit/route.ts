@@ -7,6 +7,7 @@ const { env: { imagekit: { publicKey, privateKey, urlEndpoint } } } = config;
 
 //instance of image kit 
 const imagekit = new ImageKit({ publicKey, privateKey, urlEndpoint });
+console.table(imagekit);
 
 export async function GET() {
     return NextResponse.json(imagekit.getAuthenticationParameters());
